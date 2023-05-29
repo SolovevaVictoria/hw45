@@ -1,0 +1,15 @@
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\bin\Debug\net6.0\hw45.exe
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\bin\Debug\net6.0\hw45.deps.json
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\bin\Debug\net6.0\hw45.runtimeconfig.json
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\bin\Debug\net6.0\hw45.dll
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\bin\Debug\net6.0\hw45.pdb
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.csproj.AssemblyReference.cache
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.AssemblyInfoInputs.cache
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.AssemblyInfo.cs
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.csproj.CoreCompileInputs.cache
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.dll
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\refint\hw45.dll
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.pdb
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\hw45.genruntimeconfig.cache
+C:\Users\RZMQOMSIYZYYTXS\Desktop\дз_28_05\hw45\obj\Debug\net6.0\ref\hw45.dll
