@@ -345,7 +345,10 @@ int[] max_mas(int[] mas){
             res[1] = max_item(mas);
             len_mas = 0;
         }
-        
+    if (res[0] == res[1]){
+        res[0] = 0;
+        res[1] = 0;
+    }
     return res;
     }
 
@@ -354,10 +357,12 @@ int[] max_mas(int[] mas){
 int[] m7 = {1, 5, 3, 4, 1, 7, 8 , 15 , 1};
 int[] m8 = {1, 5, 2, 3, 4, 1, 7, 8 , 15 , 1};
 int[] m9 = {1, 5, 2, 3, 4, 6, 1, 7};
+int[] m11 = {1,5};
 Console.WriteLine("Проверка тестов из задания:");
 print_mas(max_mas(m7));
 print_mas(max_mas(m8));
 print_mas(max_mas(m9));
+print_mas(max_mas(m11));
 Console.WriteLine("Массив случайных чисел:");
 int[] m10 = create_mas_random_int(10, 1, 10);
 print_mas(m10);
