@@ -342,31 +342,28 @@ void shaffle(int[,] matr){
             m[k] = matr[i, j];
             k +=1;}}
     int r = 0;
-    int[] mark = new int[rows * colls / 2 + 1];
-    for(int i = 0; i < rows * colls / 2 + 1; i++){
+    int[] mark = new int[rows * colls];
+    int count = 0;
+    for(int i = 0; i < rows * colls; i++){
         if (mark.Contains(i) && i != 0) continue;
         r = rnd.Next(i + 1, m.Length);
         while(mark.Contains(r))
             r = rnd.Next(i + 1, m.Length);
         mark[i] = r;
-        System.Console.WriteLine(i + " " + r);
+        //System.Console.WriteLine(i + " " + r);
         int temp = m[i];
         m[i] =  m[r];
         m[r] = temp;
+        count++;
         
     }
+    System.Console.WriteLine($"Замен: {count}");
     k = 0;
     for(int i = 0; i < rows; i++){
         for(int j = 0; j < colls; j++){
             matr[i, j] = m[k];
             k += 1;}}}
 
-void print_mas_int(int[] mas){
-    Console.Write("[");
-    for(int i = 0; i < mas.GetLength(0); i++){
-            System.Console.Write($"{mas[i], 20}");
-    }
-    Console.WriteLine($"]");}
 
 
 
