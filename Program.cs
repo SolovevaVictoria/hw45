@@ -1,174 +1,178 @@
-﻿// дз 4:
-// int count (decimal num) {
-//     if (num == 0) return 1;
-//     int res = 0;
-//     int part1 = (int)num;
-//     decimal part2 = num - part1;
-//     while(part2 > 0)
-//     {
-//         part2 *= 10; //передвигаем запятую
-//         part2 -= (int)part2; // вычитаем целую часть (всегда будет 0,...): 
-//         //дробная часть 0,34, домножили на 10 - получили 3.40, вычли целую часть (3) -получаем 0.40 
-//         //и движемся к 0.00
-//         res++;
-//     }
-//     if (part1 == 0) res++;
-//     else{
-//     while(part1 != 0)
-//     {
-//         part1 /= 10;
-//         res++;
-//     }
-//     }
-//     return res; }
+﻿// дз7:
+// // ********************************************************
+// Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
+// m = 3, n = 4.
+// 0,5 7 -2 -0,2
+// 1 -3,3 8 -9,9
+// 8 7,8 -7,1 9
 
-// Console.WriteLine("Введите число");
-// decimal number = Convert.ToDecimal(Console.ReadLine());
-// System.Console.WriteLine($"колличество цифр числа {number} = {count(number)}");
-
-
-
-
-// ********************************************************
-// дз 5:
-//  Задайте массив заполненный случайными положительными трёхзначными числами. 
-//Напишите программу, которая покажет количество чётных чисел в массиве.
-// [345, 897, 568, 234] -> 2
-
-// int[] create_mas_random_int(int size, int min_n, int max_n){
-//     int[] mas = new int[size];
+// double[,] create_matrix_random_double(int i, int j){
+//     double[,] mas = new double[i, j];
 //     Random rnd = new Random();
-//     for(int i = 0; i < mas.Length; i++){
-//         mas[i] = rnd.Next(min_n, max_n + 1);
-//     }
-//     return mas;
-// }
+//     for(i = 0; i < mas.GetLength(0); i++){
+//         for(j = 0; j < mas.GetLength(1); j++){
+//             mas[i, j] = rnd.NextDouble() * 100;
+//     }}
+//     return mas;}
 
 
-// void print_mas(int[] mas){
+// void print_matrix_double(double[,] mas){
 //     Console.Write("[");
-//     for (int i = 0; i < mas.Length - 1; i++){
-//         Console.Write(mas[i] + ", ");
+//     for(int i = 0; i < mas.GetLength(0); i++){
+//         for(int j = 0; j < mas.GetLength(1); j++){
+//             System.Console.Write($"{mas[i, j], 20}");
+//     }
+//     System.Console.WriteLine();
+//     }
+//     Console.WriteLine($"]");}
+
+
+// System.Console.WriteLine("Введите количеттво строк и количество столбцов(последовательно, через enter).");
+// double[,] matrix = create_matrix_random_double(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+// print_matrix_double(matrix);
+// // ********************************************************
+
+
+
+// // ********************************************************
+// Задача 50. Напишите программу, которая на вход принимает значение элемента в двумерном массиве, 
+// и возвращает позицию этого элемента или же указание, что такого элемента нет.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// 17 -> такого числа в массиве нет
+
+// long[,] create_matrix_random_int(int i, int j){
+//     long[,] mas = new long[i, j];
+//     Random rnd = new Random();
+//     for(i = 0; i < mas.GetLength(0); i++){
+//         for(j = 0; j < mas.GetLength(1); j++){
+//             mas[i, j] = rnd.NextInt64(-100, 101);
+//     }}
+//     return mas;}
+
+
+
+// void print_matrix_int(long[,] mas){
+//     Console.Write("[");
+//     for(int i = 0; i < mas.GetLength(0); i++){
+//         for(int j = 0; j < mas.GetLength(1); j++){
+//             System.Console.Write($"{mas[i, j], 5}");
+//     }
+//     System.Console.WriteLine();
+//     }
+//     Console.WriteLine($"]");}
+
+// long[] find_value(long[,] matr, long val){
+//     long[] value = {-1, -1};
+//      for(int i = 0; i < matr.GetLength(0); i++){
+//         for(int j = 0; j < matr.GetLength(1); j++){
+//             if(matr[i, j] == val) {
+//                 value[0] = i;
+//                 value[1] = j;
+//     }}}
+//     return value;
 // }
-// Console.WriteLine($"{mas[mas.Length - 1]}]");
-// }
+
+// System.Console.WriteLine("Введите количеттво строк и количество столбцов(последовательно, через enter).");
+// long[,] matrix1 = create_matrix_random_int(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+// print_matrix_int(matrix1);
+// System.Console.WriteLine("Введите значение для поиска");
+// long[] find_val = find_value(matrix1, Convert.ToInt64(Console.ReadLine()));
+// if(find_val[0] == -1) System.Console.WriteLine("Нет такого элемента");
+// else System.Console.WriteLine($"Искомый элемент находится в строке номер {find_val[0] + 1} и столбце номер {find_val[1] + 1}.");
+// // ********************************************************
+
+
+// // ********************************************************
+// Задача 52. Задайте двумерный массив из целых чисел. Найдите среднее арифметическое элементов в каждом столбце.
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 2 3
+// 8 4 2 4
+// Среднее арифметическое каждого столбца: 4,6; 5,6; 3,6; 3.
+
+// long[,] create_matrix_random_int(int i, int j){
+//     long[,] mas = new long[i, j];
+//     Random rnd = new Random();
+//     for(i = 0; i < mas.GetLength(0); i++){
+//         for(j = 0; j < mas.GetLength(1); j++){
+//             mas[i, j] = rnd.NextInt64(-100, 101);
+//     }}
+//     return mas;}
+
+
+
+// void print_matrix_int(long[,] mas){
+//     Console.Write("[");
+//     for(int i = 0; i < mas.GetLength(0); i++){
+//         for(int j = 0; j < mas.GetLength(1); j++){
+//             System.Console.Write($"{mas[i, j], 5}");
+//     }
+//     System.Console.WriteLine();
+//     }
+//     Console.WriteLine($"]");}
+
+// void print_matrix_double(double[,] mas){
+//     Console.Write("[");
+//     for(int i = 0; i < mas.GetLength(0); i++){
+//         for(int j = 0; j < mas.GetLength(1); j++){
+//             System.Console.Write($"{mas[i, j], 20}");
+//     }
+//     System.Console.WriteLine();
+//     }
+//     Console.WriteLine($"]");}
+
 
 // void print_mas_double(double[] mas){
 //     Console.Write("[");
-//     for (int i = 0; i < mas.Length - 1; i++){
-//         Console.Write(mas[i] + ", ");
+//     for(int i = 0; i < mas.GetLength(0); i++){
+//             System.Console.Write($"{mas[i], 20}");
+//     }
+//     Console.WriteLine($"]");}
+
+
+// double[] average_colls(long[,] matr){
+//     double[] res = new double[matr.GetLength(1)];
+//     for(int i = 0; i < matr.GetLength(0); i++){
+//         for(int j = 0; j < matr.GetLength(1); j++){
+//             res[j] += matr[i,j];
+//         }
+//     }
+//     long len_s = matr.GetLength(0);
+//     for(int j = 0; j < matr.GetLength(1); j++){
+//         res[j] /=  len_s;
+//     }
+// return res;
 // }
-// Console.WriteLine($"{mas[mas.Length - 1]}]");
-// }
-
-// // int count_even(int[] mas){
-// //     int res = 0;
-// //     foreach (var item in mas){
-// //         if (item % 2 == 0) res++;
-// //     }
-// //     return res;
-// // }
 
 
-// // Console.WriteLine("Введите размерность массива");
-// // int n = Convert.ToInt32(Console.ReadLine());
-// // int[] m1 = create_mas_random_int(n, 100, 999);
-// // Console.WriteLine("Массив:");
-// // print_mas(m1);
-// // System.Console.WriteLine($"Количество чётных чисел в массиве: {count_even(m1)}");
-// // ********************************************************
-
-
-// // ********************************************************
-// // Задача 36: Задайте одномерный массив, заполненный случайными числами. 
-// // Найдите сумму элементов, стоящих на нечётных позициях.
-// // [3, 7, 23, 12] -> 19
-// // [-4, -6, 89, 6] -> 0
-// // int sum_odd_index(int[] mas){
-// //     int res = 0;
-// //     for(int i = 1; i <mas.Length; i = i + 2){
-// //         res += mas[i];
-// //     }
-// //     return res;
-// // }
-
-// // Console.WriteLine("Введите размерность массива");
-// // int count = Convert.ToInt32(Console.ReadLine());
-// // int[] m2 = create_mas_random_int(count, -10, 10);
-// // Console.WriteLine("Массив:");
-// // print_mas(m2);
-// // System.Console.WriteLine($"Сумма чисел на нечётных позициях: {sum_odd_index(m2)}");
+// System.Console.WriteLine("Введите количеттво строк и количество столбцов(последовательно, через enter).");
+// long[,] matrix1 = create_matrix_random_int(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+// print_matrix_int(matrix1);
+// double[] average_coll = average_colls(matrix1);
+// System.Console.WriteLine($"Средние значения по столбцам:");
+// print_mas_double(average_coll);
+// System.Console.WriteLine($"Для проверки тест из условия:");
+// long[,] matrix2 = {{1, 4, 7, 2}, {5, 9, 2, 3}, {8, 4, 2, 4}};
+// print_mas_double(average_colls(matrix2));
 // // ********************************************************
 
 
 
 // // ********************************************************
-// // Задача 38: Задайте массив вещественных чисел. 
-// // Найдите разницу между максимальным и минимальным элементов массива.
-// Random rand = new Random();
-// double[] create_mas_random_double(int size){
-//     double[] mas = new double[size];
-//     Random rnd = new Random();
-//     for(int i = 0; i < mas.Length; i++){
-//         mas[i] = rand.NextDouble() * 100;
-//     }
-//     return mas;
-// }
-// double min_item(double[] mas){
-//     double res = mas[0];
-//     for(int i=1; i < mas.Length; i++){
-//         if (mas[i] < res) res = mas[i];
-//     }
-//     return res;
-// }
+// Задача HARD SORT необязательная. Считается за три обязательных
+// Задайте двумерный массив из целых чисел. Количество строк и столбцов задается с клавиатуры. 
+// Отсортировать элементы по возрастанию слева направо и сверху вниз.
 
-// double max_item(double[] mas){
-//     double res = mas[0];
-//     for(int i=1; i < mas.Length; i++){
-//         if (mas[i] > res) res = mas[i];
-//     }
-//     return res;
-// }
+// Например, задан массив:
+// 1 4 7 2
+// 5 9 10 3
 
-// Console.WriteLine("Введите размерность массива");
-// int count = Convert.ToInt32(Console.ReadLine());
-// double[] m3 = create_mas_random_double(count);
-// Console.WriteLine("Массив:");
-// print_mas_double(m3);
-// System.Console.WriteLine($":Разница между максимальным и минимальным элементами массива: {max_item(m3) - min_item(m3)}");
-// //********************************************************
-
-
-// Задача HARD STAT необязательная: Задайте массив случайных целых чисел. 
-// Найдите максимальный элемент и его индекс, минимальный элемент и его индекс, 
-// среднее арифметическое всех элементов. 
-// Сохранить эту инфу в отдельный массив и вывести на экран с пояснениями. 
-// Найти медианное значение первоначалального массива , 
-// возможно придется кое-что для этого дополнительно выполнить.
-
-// int[] create_mas_random_int(int size, int min_n, int max_n){
-//     int[] mas = new int[size];
-//     Random rnd = new Random();
-//     for(int i = 0; i < mas.Length; i++){
-//         mas[i] = rnd.Next(min_n, max_n + 1);
-//     }
-//     return mas;
-// }
-
-
-// void print_mas(int[] mas){
-//     Console.Write("[");
-//     for (int i = 0; i < mas.Length - 1; i++){
-//         Console.Write(mas[i] + ", ");
-// }
-// Console.WriteLine($"{mas[mas.Length - 1]}]");
-// }
-
-// void print_mas_string(string[] mas){
-//     for (int i = 0; i < mas.Length; i++){
-//         Console.WriteLine(mas[i]);
-// }
-// }
+// После сортировки
+// 1 2 3 4
+// 5 7 9 10
 
 // int[] quick_sort(int[] mas, int min_ind, int max_ind){
 //     if (min_ind >= max_ind){
@@ -200,172 +204,176 @@
 //             rightItem = temp;
 //         }
 
-// int[] min_item(int[] mas){
-//     int[] res = {0, mas[0]};
-//     for(int i=1; i < mas.Length; i++){
-//         if (mas[i] < res[0]) {
-//             res[0] = i;
-//             res[1] = mas[i];
-//         }
+// int[,] create_matrix_random_int(int i, int j){
+//     int[,] mas = new int[i, j];
+//     Random rnd = new Random();
+//     for(i = 0; i < mas.GetLength(0); i++){
+//         for(j = 0; j < mas.GetLength(1); j++){
+//             mas[i, j] = rnd.Next(-100, 101);
+//     }}
+//     return mas;}
+
+
+
+// void print_matrix_int(int[,] mas){
+//     Console.Write("[");
+//     for(int i = 0; i < mas.GetLength(0); i++){
+//         for(int j = 0; j < mas.GetLength(1); j++){
+//             System.Console.Write($"{mas[i, j], 5}");
 //     }
-
-//     return res;
-// }
-// int[] min_ind_item(int[] mas){
-//     int[] res = {0, mas[0]};
-//     for(int i=1; i > mas.Length; i++){
-//         if (mas[i] < res[0]) {
-//             res[0] = i;
-//             res[1] = mas[i];
-//         }
+//     System.Console.WriteLine();
 //     }
-//     return res;
+//     Console.WriteLine($"]");}
+
+
+
+// void sort_matrix_colls(int[,] matr){
+//     int rows = matr.GetLength(0);
+//     int colls = matr.GetLength(1);
+
+//     int[] m2 = new int[rows];
+//     for(int i = 0; i < colls; i++){
+//         for(int j = 0; j < rows; j++){
+//             m2[j] = matr[j, i];}
+//         quick_sort(m2, 0, rows - 1);
+//        for(int j = 0; j < rows; j++){
+//             matr[j, i] = m2[j];}
+// }
+// }
+// void sort_matrix_rows(int[,] matr){
+//     int rows = matr.GetLength(0);
+//     int colls = matr.GetLength(1);
+//     int[] m1 = new int[colls];
+//     for(int i = 0; i < rows; i++){
+//         for(int j = 0; j < colls; j++){
+//             m1[j] = matr[i, j];}
+//         quick_sort(m1, 0, colls - 1);
+//         for(int j = 0; j < colls; j++){
+//             matr[i, j] = m1[j];}
+// }
+// }
+
+// void sort_matrix(int[,] matr){
+//     int rows = matr.GetLength(0);
+//     int colls = matr.GetLength(1);
+//     int[] m = new int[rows * colls];
+//     int k = 0;
+//     for(int i = 0; i < rows; i++){
+//         for(int j = 0; j < colls; j++){
+//             m[k] = matr[i, j];
+//             k +=1;}}
+//     quick_sort(m, 0, colls * rows - 1);
+//     k = 0;
+//     for(int i = 0; i < rows; i++){
+//         for(int j = 0; j < colls; j++){
+//             matr[i, j] = m[k];
+//             k += 1;}}
+        
 // }
 
 
-
-// int[] max_ind_item(int[] mas){
-//     int[] res = {0, mas[0]};
-//     for(int i=1; i < mas.Length; i++){
-//         if (mas[i] > res[0]) 
-//         res[0] = i;
-//         res[1] = mas[i];
-//     }
-//     return res;
-// }
-
-// double average(int[] mas){
-//     int res = 0;
-//     for(int i=0; i < mas.Length; i++)
-//         res += mas[i];
-//     return (double)res / mas.Length;
-// }
-
-// int mediana(int[] mas){
-//     quick_sort(mas,0, mas.Length - 1);
-//     int res = 0;
-//     if (mas.Length % 2 == 0) return (mas[mas.Length / 2 -1] + mas[mas.Length / 2]) / 2;
-//     else return mas[mas.Length / 2];
-// }
-
-// string[] res(int[] mas){
-//     int[] min_i = min_ind_item(mas);
-//     int[] max_i = max_ind_item(mas);
-//     int median = mediana(mas);
-//     string[] result = new string[4];
-//     result[0] = $"Минимальный элемент c индексом: {min_i[0]} = {min_i[1]}";
-//     result[1] = $"Максимальный элемент c индексом: {max_i[0]} = {max_i[1]}";
-//     result[2] = $"Среднее арифметическое: {average(mas)}";
-//     result[3] =  $"Медиана: {median}";
-//     return result;
-// }
-
-// int[] m4 = create_mas_random_int(11, 1,100);
-// Console.WriteLine("Массив:");
-// print_mas(m4);
-// print_mas_string(res(m4));
-// Console.WriteLine("Массив после сортировки для проверки:");
-// print_mas(m4);
-// // ********************************************************
+// System.Console.WriteLine("Введите количеттво строк и количество столбцов(последовательно, через enter).");
+// int[,] matrix3 = create_matrix_random_int(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+// System.Console.WriteLine("До сортировки:");
+// print_matrix_int(matrix3);
+// sort_matrix(matrix3);
+// System.Console.WriteLine("Отсортировали:");
+// print_matrix_int(matrix3);
+// int[,] matrix4 = {{1, 4, 7, 2}, {5, 9, 10, 3}};
+// System.Console.WriteLine("До сортировки:");
+// print_matrix_int(matrix4);
+// sort_matrix(matrix4);
+// System.Console.WriteLine("Отсортировали:");
+// print_matrix_int(matrix4);
 
 
 
-// // ********************************************************
-// Задача VERY HARD необязательная Имеется массив случайных целых чисел. 
-//Создайте массив, в который попадают числа, описывающие максимальную сплошную возрастающую последовательность. 
-//Порядок элементов менять нельзя.
-// Одно число - это не последовательность.
-// Пример:
-// [1, 5, 2, 3, 4, 6, 1, 7] => [1, 7] так как здесь вразброс присутствуют все числа от 1 до 7
-// [1, 5, 2, 3, 4, 1, 7, 8 , 15 , 1 ] => [1, 5] так как здесь есть числа от 1 до 5 и эта последовательность длиннее чем от 7 до 8
-// [1, 5, 3, 4, 1, 7, 8 , 15 , 1 ] => [3, 5] так как здесь есть числа от 3 до 5 и эта последовательность длиннее чем от 7 до 8
 
-int[] create_mas_random_int(int size, int min_n, int max_n){
-    int[] mas = new int[size];
-    Random rnd = new Random();
-    for(int i = 0; i < mas.Length; i++){
-        mas[i] = rnd.Next(min_n, max_n + 1);
-    }
-    return mas;
-}
+// задача 2 HARD необязательная. Считается за четыре обязательных ) то есть три этих и одна с будущего 
+//семинара
+// Сгенерировать массив случайных целых чисел размерностью m*n (размерность вводим с клавиатуры) , 
+//причем чтоб количество элементов было четное. Вывести на экран красивенько таблицей. 
+//Перемешать случайным образом элементы массива, причем чтобы каждый элемент гарантированно и только 
+//один раз переместился на другое место и выполнить перемешивание за m*n / 2 итераций. 
+//То есть если массив три на четыре, то надо выполнить за 6 итераций. 
+//И далее в конце опять вывести на экран как таблицу.
+// например, на входе массив 2* 3
+// 2 3 5
+// 1 9 4
+// первая итерация перемешивания - выбрали индексы 0,0 и 1,2 случайный образом, поменяли ячейки
+// 4 3 5
+// 1 9 2
+// вторая итерация - индексы 0, 0 и 1,2 не трогаем, так как это уже перемещенные ячейки, выбираем случайным образом из оставшихся ячеек, выбрали ячейки 0, 1 и 0,2, поменяли значения
+// 4 5 3
+// 1 9 2
+// третья итерация - теперь остались только ячейки 1,0 и 1,1, меняем их местами
+// 4 5 3
+// 9 1 2
+Random rnd = new Random();
+int[,] create_matrix_random_int(int i, int j){
+    int[,] mas = new int[i, j];
+    for(i = 0; i < mas.GetLength(0); i++){
+        for(j = 0; j < mas.GetLength(1); j++){
+            mas[i, j] = rnd.Next(-100, 101);
+    }}
+    return mas;}
 
 
-void print_mas(int[] mas){
+
+void print_matrix_int(int[,] mas){
     Console.Write("[");
-    for (int i = 0; i < mas.Length - 1; i++){
-        Console.Write(mas[i] + ", ");
-}
-Console.WriteLine($"{mas[mas.Length - 1]}]");
-}
-
-
-int max_item(int[] mas){
-    int res = mas[0];
-    for(int i=1; i < mas.Length; i++){
-        if (mas[i] > res) 
-        res = mas[i];
+    for(int i = 0; i < mas.GetLength(0); i++){
+        for(int j = 0; j < mas.GetLength(1); j++){
+            System.Console.Write($"{mas[i, j], 5}");
     }
-    return res;
-}
-
-int min_item(int[] mas){
-    int res = mas[0];
-    for(int i=1; i < mas.Length; i++){
-        if (mas[i] < res) 
-        res = mas[i];
+    System.Console.WriteLine();
     }
-    return res;
-}
+    Console.WriteLine($"]");}
 
-int[] max_mas(int[] mas){
-    int[] res = new int[2];
-    int max_len_mas = 0;
-    int len_mas = 0;
-    Boolean left_first = true;
-    int left = min_item(mas);
-    for (int i = min_item(mas); i <= max_item(mas); i++){
-        if(mas.Contains(i)){
-            if (left_first) {
-                left = i;
-                left_first = false;
-            }
-            len_mas++;
-               }
-        else {
-            if(len_mas > max_len_mas) {
-                max_len_mas = len_mas;
-                res[0] = left;
-                res[1] = i - 1;}
-            left_first = true;
-            len_mas = 0;
-        }}
-        if(len_mas > max_len_mas) {
-            max_len_mas = len_mas;
-            res[0] = left;
-            res[1] = max_item(mas);
-            len_mas = 0;
-        }
-    if (res[0] == res[1]){
-        res[0] = 0;
-        res[1] = 0;
+
+void shaffle(int[,] matr){
+    int rows = matr.GetLength(0);
+    int colls = matr.GetLength(1);
+    int[] m = new int[rows * colls];
+    
+    int k = 0;
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < colls; j++){
+            m[k] = matr[i, j];
+            k +=1;}}
+    int r = 0;
+    int[] mark = new int[rows * colls / 2 + 1];
+    for(int i = 0; i < rows * colls / 2 + 1; i++){
+        if (mark.Contains(i) && i != 0) continue;
+        r = rnd.Next(i + 1, m.Length);
+        while(mark.Contains(r))
+            r = rnd.Next(i + 1, m.Length);
+        mark[i] = r;
+        System.Console.WriteLine(i + " " + r);
+        int temp = m[i];
+        m[i] =  m[r];
+        m[r] = temp;
+        
     }
-    return res;
+    k = 0;
+    for(int i = 0; i < rows; i++){
+        for(int j = 0; j < colls; j++){
+            matr[i, j] = m[k];
+            k += 1;}}}
+
+void print_mas_int(int[] mas){
+    Console.Write("[");
+    for(int i = 0; i < mas.GetLength(0); i++){
+            System.Console.Write($"{mas[i], 20}");
     }
+    Console.WriteLine($"]");}
 
 
 
-int[] m7 = {1, 5, 3, 4, 1, 7, 8 , 15 , 1};
-int[] m8 = {1, 5, 2, 3, 4, 1, 7, 8 , 15 , 1};
-int[] m9 = {1, 5, 2, 3, 4, 6, 1, 7};
-int[] m11 = {1,5};
-Console.WriteLine("Проверка тестов из задания:");
-print_mas(max_mas(m7));
-print_mas(max_mas(m8));
-print_mas(max_mas(m9));
-print_mas(max_mas(m11));
-Console.WriteLine("Массив случайных чисел:");
-int[] m10 = create_mas_random_int(10, 1, 10);
-print_mas(m10);
-Console.WriteLine("Подпоследовательность (при нескольких подпоследовательностях равной длины возвращает первую):");
-print_mas(max_mas(m10));
-// // ********************************************************
+System.Console.WriteLine("Введите количеттво строк и количество столбцов(последовательно, через enter).");
+int[,] matrix3 = create_matrix_random_int(Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
+System.Console.WriteLine("До перестановки:");
+print_matrix_int(matrix3);
+shaffle(matrix3);
+System.Console.WriteLine("Перемешали:");
+print_matrix_int(matrix3);
